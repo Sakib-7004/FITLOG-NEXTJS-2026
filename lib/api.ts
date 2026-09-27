@@ -87,7 +87,7 @@ function extractList(payload: any): any[] {
 }
 
 export async function getWorkouts(): Promise<Workout[]> {
-  const response = await fetch(ALL_WORKOUTS_API, { cache: "no-store" });
+  const response = await fetch(ALL_WORKOUTS_API, { cache: "force-cache" });
 
   if (!response.ok) {
     throw new Error("Could not load workouts");
@@ -98,7 +98,7 @@ export async function getWorkouts(): Promise<Workout[]> {
 }
 
 export async function getWorkout(id: string): Promise<Workout> {
-  const response = await fetch(WORKOUT_API(id), { cache: "no-store" });
+  const response = await fetch(WORKOUT_API(id), { cache: "force-cache" });
 
   if (!response.ok) {
     throw new Error("Workout not found");
