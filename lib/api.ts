@@ -25,7 +25,7 @@ const exerciseGifs: Array<{ keywords: string[]; url: string }> = [
   },
   {
     keywords: ["dumbbell curl", "dumbell curl", "biceps curl", "dumbbell biceps curl"],
-    url: `${imageBasePath}/workout-images/dumbbell-curl.jpeg`,
+    url: `${imageBasePath}/workout-images/dumbbell-bicep-curl.jpeg`,
   },
   { keywords: ["burpee", "burpees"], url: `${imageBasePath}/workout-images/burpee.jpeg` },
   { keywords: ["pull up", "pull-up", "pullup"], url: `${imageBasePath}/workout-images/pull-up.jpeg` },
