@@ -11,65 +11,44 @@ const fallbackImage =
 // The reference page URLs are kept in comments; the image field uses the
 // actual media URL so the workout card can render it directly.
 const exerciseGifs: Array<{ keywords: string[]; url: string }> = [
+  { keywords: ["russian twist"], url: "/workout-images/russian-twist.jpeg" },
   {
-    // https://fitnessprogramer.com/exercise/russian-twist/
-    keywords: ["russian twist"],
-    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Russian-Twist.gif",
-  },
-  {
-    // https://www.lyfta.app/exercise/body-saw-plank-9g7
     keywords: ["hollow body plank", "hollow-body plank", "body saw plank"],
-    url: "https://www.lyfta.app/thumbnails/43841201.jpg",
+    url: "/workout-images/hollow-body-plank.jpeg",
   },
   {
-    // https://fitnessprogramer.com/exercise/push-up-plus/
     keywords: ["push up", "push-up", "pushup", "push up plus", "push-up plus"],
-    url: "https://fitnessprogramer.com/wp-content/uploads/2021/06/Push-Up-Plus.gif",
+    url: "/workout-images/push-up.jpeg",
   },
   {
-    // https://fitnessprogramer.com/exercise/dumbbell-curl/
     keywords: ["dumbbell curl", "dumbell curl", "biceps curl", "dumbbell biceps curl"],
-    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Curl.gif",
+    url: "/workout-images/dumbbell-curl.jpeg",
   },
+  { keywords: ["burpee", "burpees"], url: "/workout-images/burpee.jpeg" },
+  { keywords: ["pull up", "pull-up", "pullup"], url: "/workout-images/pull-up.jpeg" },
   {
-    // https://liftmanual.com/burpee/
-    keywords: ["burpee", "burpees"],
-    url: "https://liftmanual.com/wp-content/uploads/2023/04/burpee.jpg",
-  },
-  {
-    // https://fitnessprogramer.com/exercise/pull-up/
-    keywords: ["pull up", "pull-up", "pullup"],
-    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Pull-up.gif",
-  },
-  {
-    // https://fitnessprogramer.com/exercise/kettlebell-swings/
     keywords: ["kettlebell swing", "kettlebell swings"],
-    url: "https://fitnessprogramer.com/wp-content/uploads/2021/09/Kettlebell-Swings.gif",
+    url: "/workout-images/kettlebell-swing.jpeg",
   },
   {
-    // https://fitnessprogramer.com/exercise/dumbbell-walking-lunge/
     keywords: ["walking lunge", "walking lunges", "dumbbell walking lunge"],
-    url: "https://fitnessprogramer.com/wp-content/uploads/2023/09/dumbbell-lunges.gif",
+    url: "/workout-images/walking-lunge.jpeg",
   },
   {
-    // https://liftmanual.com/dumbbell-standing-overhead-press/
     keywords: ["overhead press", "overhead presses", "dumbbell standing overhead press"],
-    url: "https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-standing-overhead-press.jpg",
+    url: "/workout-images/overhead-press.jpeg",
   },
   {
-    // https://fitnessprogramer.com/exercise/bench-press/
     keywords: ["barbell bench press", "bench press"],
-    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif",
+    url: "/workout-images/barbell-bench-press.jpeg",
   },
   {
-    // https://burnfit.io/en/library/barbell-deadlift/
     keywords: ["conventional deadlift", "barbell deadlift", "deadlift"],
-    url: "https://burnfit.io/en/wp-content/uploads/sites/3/2026/01/BB_DL.gif",
+    url: "/workout-images/conventional-deadlift.jpeg",
   },
   {
-    // https://training.fit/exercise/barbell-squats/
     keywords: ["back squat", "barbell squat", "barbell squats", "squat", "squats"],
-    url: "https://training.fit/wp-content/uploads/2020/03/kniebeugen-langhantel-800x448.png",
+    url: "/workout-images/back-squat.jpeg",
   },
 ];
 
