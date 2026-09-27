@@ -7,48 +7,51 @@ export const WORKOUT_API = (id: string) =>
 const fallbackImage =
   "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80";
 
+const imageBasePath =
+  process.env.NODE_ENV === "production" ? "/FITLOG-NEXTJS-2026" : "";
+
 // Exercise-specific images/GIFs supplied from the exercise reference pages.
 // The reference page URLs are kept in comments; the image field uses the
 // actual media URL so the workout card can render it directly.
 const exerciseGifs: Array<{ keywords: string[]; url: string }> = [
-  { keywords: ["russian twist"], url: "/workout-images/russian-twist.jpeg" },
+  { keywords: ["russian twist"], url: `${imageBasePath}/workout-images/russian-twist.jpeg" },
   {
     keywords: ["hollow body plank", "hollow-body plank", "body saw plank"],
-    url: "/workout-images/hollow-body-plank.jpeg",
+    url: `${imageBasePath}/workout-images/hollow-body-plank.jpeg",
   },
   {
     keywords: ["push up", "push-up", "pushup", "push up plus", "push-up plus"],
-    url: "/workout-images/push-up.jpeg",
+    url: `${imageBasePath}/workout-images/push-up.jpeg",
   },
   {
     keywords: ["dumbbell curl", "dumbell curl", "biceps curl", "dumbbell biceps curl"],
-    url: "/workout-images/dumbbell-curl.jpeg",
+    url: `${imageBasePath}/workout-images/dumbbell-curl.jpeg",
   },
-  { keywords: ["burpee", "burpees"], url: "/workout-images/burpee.jpeg" },
-  { keywords: ["pull up", "pull-up", "pullup"], url: "/workout-images/pull-up.jpeg" },
+  { keywords: ["burpee", "burpees"], url: `${imageBasePath}/workout-images/burpee.jpeg" },
+  { keywords: ["pull up", "pull-up", "pullup"], url: `${imageBasePath}/workout-images/pull-up.jpeg" },
   {
     keywords: ["kettlebell swing", "kettlebell swings"],
-    url: "/workout-images/kettlebell-swing.jpeg",
+    url: `${imageBasePath}/workout-images/kettlebell-swing.jpeg",
   },
   {
     keywords: ["walking lunge", "walking lunges", "dumbbell walking lunge"],
-    url: "/workout-images/walking-lunge.jpeg",
+    url: `${imageBasePath}/workout-images/walking-lunge.jpeg",
   },
   {
     keywords: ["overhead press", "overhead presses", "dumbbell standing overhead press"],
-    url: "/workout-images/overhead-press.jpeg",
+    url: `${imageBasePath}/workout-images/overhead-press.jpeg",
   },
   {
     keywords: ["barbell bench press", "bench press"],
-    url: "/workout-images/barbell-bench-press.jpeg",
+    url: `${imageBasePath}/workout-images/barbell-bench-press.jpeg",
   },
   {
     keywords: ["conventional deadlift", "barbell deadlift", "deadlift"],
-    url: "/workout-images/conventional-deadlift.jpeg",
+    url: `${imageBasePath}/workout-images/conventional-deadlift.jpeg",
   },
   {
     keywords: ["back squat", "barbell squat", "barbell squats", "squat", "squats"],
-    url: "/workout-images/back-squat.jpeg",
+    url: `${imageBasePath}/workout-images/back-squat.jpeg",
   },
 ];
 
