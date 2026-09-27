@@ -7,6 +7,56 @@ export const WORKOUT_API = (id: string) =>
 const fallbackImage =
   "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80";
 
+// Exercise GIFs from Wikimedia Commons. Each URL is matched only to the
+// exercise names it actually demonstrates.
+const exerciseGifs: Array<{ keywords: string[]; url: string }> = [
+  {
+    keywords: ["push up", "push-up", "pushup"],
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pushups.gif",
+  },
+  {
+    keywords: ["squat", "squats"],
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Squats.gif",
+  },
+  {
+    keywords: ["jumping jack", "jumping jacks"],
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jumpingjacks.gif",
+  },
+  {
+    keywords: ["burpee", "burpees"],
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Burpees.gif",
+  },
+  {
+    keywords: ["sit up", "sit-up", "situp", "sit ups", "sit-ups", "situps"],
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Situps.gif",
+  },
+  {
+    keywords: ["standing calf raise", "standing calf raises", "calf raise", "calf raises"],
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Standing-calf-raises-1.gif",
+  },
+  {
+    keywords: ["seated calf raise", "seated calf raises"],
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seated-calf-raise-1.gif",
+  },
+];
+
+function getExerciseGif(name: string) {
+  const normalized = name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
+  const match = exerciseGifs.find(({ keywords }) =>
+    keywords.some((keyword) => {
+      const normalizedKeyword = keyword
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+
+      return normalized === normalizedKeyword || normalized.includes(normalizedKeyword);
+    })
+  );
+
+  return match?.url;
+}
+
 function getValue(source: any, keys: string[], fallback: any = "") {
   for (const key of keys) {
     if (source?.[key] !== undefined && source?.[key] !== null) {
@@ -33,6 +83,10 @@ function toStringArray(value: any, fallback: string[]) {
 }
 
 function normalizeWorkout(item: any, index: number): Workout {
+  const name = String(
+    getValue(item, ["name", "title", "exerciseName"], `WORKOUT ${index + 1}`)
+  ).toUpperCase();
+
   const category = toStringArray(
     getValue(item, ["category", "categories", "muscle", "muscles", "bodyPart", "target"]),
     ["FULL BODY"]
@@ -48,11 +102,17 @@ function normalizeWorkout(item: any, index: number): Workout {
     ]
   );
 
+  const sourceImage = String(
+    getValue(
+      item,
+      ["image", "imageUrl", "imageURL", "thumbnail", "photo", "gifUrl", "gifURL", "gif"],
+      fallbackImage
+    )
+  );
+
   return {
     id: String(getValue(item, ["id", "_id", "exerciseId"], index + 1)),
-    name: String(
-      getValue(item, ["name", "title", "exerciseName"], `WORKOUT ${index + 1}`)
-    ).toUpperCase(),
+    name,
     description: String(
       getValue(
         item,
@@ -70,9 +130,7 @@ function normalizeWorkout(item: any, index: number): Workout {
     duration: toNumber(getValue(item, ["duration", "durationMin", "minutes"], 25), 25),
     calories: toNumber(getValue(item, ["calories", "calorie", "kcal"], 180), 180),
     rating: toNumber(getValue(item, ["rating", "score"], 4.8), 4.8),
-    image: String(
-      getValue(item, ["image", "imageUrl", "imageURL", "thumbnail", "photo", "gifUrl", "gifURL", "gif"], fallbackImage)
-    ),
+    image: getExerciseGif(name) ?? sourceImage,
     instructions: instructions.slice(0, 6),
   };
 }
