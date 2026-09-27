@@ -7,36 +7,69 @@ export const WORKOUT_API = (id: string) =>
 const fallbackImage =
   "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80";
 
-// Exercise GIFs from Wikimedia Commons. Each URL is matched only to the
-// exercise names it actually demonstrates.
+// Exercise-specific images/GIFs supplied from the exercise reference pages.
+// The reference page URLs are kept in comments; the image field uses the
+// actual media URL so the workout card can render it directly.
 const exerciseGifs: Array<{ keywords: string[]; url: string }> = [
   {
-    keywords: ["push up", "push-up", "pushup"],
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pushups.gif",
+    // https://fitnessprogramer.com/exercise/russian-twist/
+    keywords: ["russian twist"],
+    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Russian-Twist.gif",
   },
   {
-    keywords: ["squat", "squats"],
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Squats.gif",
+    // https://www.lyfta.app/exercise/body-saw-plank-9g7
+    keywords: ["hollow body plank", "hollow-body plank", "body saw plank"],
+    url: "https://www.lyfta.app/thumbnails/43841201.jpg",
   },
   {
-    keywords: ["jumping jack", "jumping jacks"],
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jumpingjacks.gif",
+    // https://fitnessprogramer.com/exercise/push-up-plus/
+    keywords: ["push up", "push-up", "pushup", "push up plus", "push-up plus"],
+    url: "https://fitnessprogramer.com/wp-content/uploads/2021/06/Push-Up-Plus.gif",
   },
   {
+    // https://fitnessprogramer.com/exercise/dumbbell-curl/
+    keywords: ["dumbbell curl", "dumbell curl", "biceps curl", "dumbbell biceps curl"],
+    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Curl.gif",
+  },
+  {
+    // https://liftmanual.com/burpee/
     keywords: ["burpee", "burpees"],
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Burpees.gif",
+    url: "https://liftmanual.com/wp-content/uploads/2023/04/burpee.jpg",
   },
   {
-    keywords: ["sit up", "sit-up", "situp", "sit ups", "sit-ups", "situps"],
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Situps.gif",
+    // https://fitnessprogramer.com/exercise/pull-up/
+    keywords: ["pull up", "pull-up", "pullup"],
+    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Pull-up.gif",
   },
   {
-    keywords: ["standing calf raise", "standing calf raises", "calf raise", "calf raises"],
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Standing-calf-raises-1.gif",
+    // https://fitnessprogramer.com/exercise/kettlebell-swings/
+    keywords: ["kettlebell swing", "kettlebell swings"],
+    url: "https://fitnessprogramer.com/wp-content/uploads/2021/09/Kettlebell-Swings.gif",
   },
   {
-    keywords: ["seated calf raise", "seated calf raises"],
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seated-calf-raise-1.gif",
+    // https://fitnessprogramer.com/exercise/dumbbell-walking-lunge/
+    keywords: ["walking lunge", "walking lunges", "dumbbell walking lunge"],
+    url: "https://fitnessprogramer.com/wp-content/uploads/2023/09/dumbbell-lunges.gif",
+  },
+  {
+    // https://liftmanual.com/dumbbell-standing-overhead-press/
+    keywords: ["overhead press", "overhead presses", "dumbbell standing overhead press"],
+    url: "https://liftmanual.com/wp-content/uploads/2023/04/dumbbell-standing-overhead-press.jpg",
+  },
+  {
+    // https://fitnessprogramer.com/exercise/bench-press/
+    keywords: ["barbell bench press", "bench press"],
+    url: "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif",
+  },
+  {
+    // https://burnfit.io/en/library/barbell-deadlift/
+    keywords: ["conventional deadlift", "barbell deadlift", "deadlift"],
+    url: "https://burnfit.io/en/wp-content/uploads/sites/3/2026/01/BB_DL.gif",
+  },
+  {
+    // https://training.fit/exercise/barbell-squats/
+    keywords: ["back squat", "barbell squat", "barbell squats", "squat", "squats"],
+    url: "https://training.fit/wp-content/uploads/2020/03/kniebeugen-langhantel-800x448.png",
   },
 ];
 
