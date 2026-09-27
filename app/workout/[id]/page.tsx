@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
 import { Clock3, Flame, Star } from "lucide-react";
-import { getWorkout } from "@/lib/api";
+import { getWorkout, getWorkouts } from "@/lib/api";
 import DetailActions from "@/components/DetailActions";
+
+export async function generateStaticParams() {
+  const workouts = await getWorkouts();
+  return workouts.map((workout) => ({ id: workout.id }));
+}
 
 export default async function WorkoutDetailsPage({
   params,
